@@ -6,6 +6,7 @@ ARITMETICA : List[str] = ["ADD", "ADDI", "SUB", "SUBI", "MUL", "DIV"]
 LOGICA : List[str] = ["AND", "OR", "NOT"]
 DESVIO : List[str] = ["BLT", "BGT", "BEQ","BNE", "J"]
 MEMORIA : List[str] = ["LW", "SW"]
+outputFile = open("output.txt", "w")
 
 class ReservationStation:
     def __init__(self) -> None:
@@ -34,14 +35,15 @@ class FunctionalUnit:
         self.inst = None
 
 class Tomasulo:
-    def __init__(self, instQueue : Deque[List[str]]) -> None:    
+    def __init__(self, instList : List[List[str]]) -> None:    
         self.pc : int = 0
+        self.clock : int = 0
         self.instrucoes : int = 0
         self.rsAddI : int = 0
         self.rsMulI : int = 16
         self.rsLdI : int = 32
-        self.clock : int = 0
-        self.instQueue : Deque[List[str]] = instQueue
+        self.instList : List[List[str]] = instList
+        self.filaDespacho : Deque[List[str]] = deque()
         self.addUnit : FunctionalUnit = [FunctionalUnit() for i in range(3)]
         self.mulUnit : FunctionalUnit = [FunctionalUnit() for i in range(3)]
         self.ldUnit : FunctionalUnit = [FunctionalUnit() for i in range(3)]
@@ -55,13 +57,18 @@ class Tomasulo:
         # como vão ser feitas as operações de desvio e logicas?
 
     # Realiza a busca da instrução na queue
-    def search(self) -> List[str]:
-        inst = self.instQueue[self.pc] 
-        self.pc += 1
-        return inst
+    def search(self) -> None:
+        if self.pc >= len(self.instList):
+            return None
+        if len(self.filaDespacho) < 16:
+            self.filaDespacho.append(self.instList[self.pc])
+            self.pc += 1
 
     # Faz o despacho da instrução
-    def issue(self, inst : List[str]):
+    def issue(self) -> None:
+        if len(self.filaDespacho) < 1:
+            return
+        inst = self.filaDespacho.popleft()
         op = inst[0]
         r = 0
         if op in ARITMETICA or op in LOGICA:
@@ -72,29 +79,70 @@ class Tomasulo:
             else:
                 while self.RS[r].busy and r < 16:
                     r += 1
-            try:
-                rd = int(inst[1][1:])
-                rs = int(inst[2][1:])
-                rt = int(inst[3][1:])
-            except:
-                raise Exception("Registrador invalido")
-            print(rd, " ", rs, " ", rt, " ", self.registerStat[rs].Qi)
-            if self.registerStat[rs].Qi != None:
-                self.RS[r].Qj = self.registerStat[rs].Qi
+            if op == "ADDI" or op == "SUBI":
+                try:
+                    rd = int(inst[1][1:])
+                    rs = int(inst[2][1:])
+                    imm = int(inst[3])
+                except:
+                    raise Exception("Sintaxe invalida")
+                    
+                if self.registerStat[rs].Qi != None:
+                    self.RS[r].Qj = self.registerStat[rs].Qi
+                else:
+                    self.RS[r].Vj = self.registerStat[rs].value
+                    
+                self.RS[r].Vk = 0
+                self.RS[r].A = imm
             else:
-                self.RS[r].Vj = self.registerStat[rs].value
-                #self.RS[r].Qj = 0
-            
-            if self.registerStat[rt].Qi != None:
-                self.RS[r].Qk = self.registerStat[rt].Qi
-            else:
-                self.RS[r].Vk = self.registerStat[rt].value
-                #self.RS[r].Qk = 0
+                try:
+                    rd = int(inst[1][1:])
+                    rs = int(inst[2][1:])
+                    rt = int(inst[3][1:])
+                except:
+                    raise Exception("Sintaxe invalida")
+                if self.registerStat[rs].Qi != None:
+                    self.RS[r].Qj = self.registerStat[rs].Qi
+                else:
+                    self.RS[r].Vj = self.registerStat[rs].value
+                    #self.RS[r].Qj = 0
+                
+                if self.registerStat[rt].Qi != None:
+                    self.RS[r].Qk = self.registerStat[rt].Qi
+                else:
+                    self.RS[r].Vk = self.registerStat[rt].value
+                    #self.RS[r].Qk = 0
             
             self.RS[r].busy = True
             self.registerStat[rd].Qi = r
         elif op in DESVIO:
-            pass
+            while self.RS[r].busy and r < 16:
+                r += 1
+            if op == "J":
+                try:
+                    imm = int(inst[1])
+                except:
+                    raise Exception("Sintaxe invalida")
+                self.RS[r].Vj = 0
+                self.RS[r].Vk = 0
+            else:
+                try:
+                    rs = int(inst[1][1:])
+                    rt = int(inst[2][1:])
+                    imm = int(inst[3])
+                except:
+                    raise Exception("Sintaxe invalida")
+                if self.registerStat[rs].Qi != None:
+                    self.RS[r].Qj = self.registerStat[rs].Qi
+                else:
+                    self.RS[r].Vj = self.registerStat[rs].value
+                
+                if self.registerStat[rt].Qi != None:
+                    self.RS[r].Qk = self.registerStat[rt].Qi
+                else:
+                    self.RS[r].Vk = self.registerStat[rt].value
+            self.RS[r].A = imm
+            self.RS[r].busy = True
         elif op in MEMORIA:
             rd = int(inst[1][1:])
             imm, rs = inst[2].replace("(", " ").replace(")", " ").split()
@@ -135,7 +183,7 @@ class Tomasulo:
         self.instrucoes += 1
 
     # Executa as instruções
-    def setUnits(self): #TODO: bem generico isso
+    def setUnits(self): 
         for unit in self.addUnit:
             if unit.busy:
                 self.RS[unit.inst].exec -= 1
@@ -223,15 +271,15 @@ class Tomasulo:
         elif self.RS[inst].op == "SW":
             return self.RS[inst].Vj + self.RS[inst].A
         elif self.RS[inst].op == "BLT":
-            pass
+            return self.RS[inst].A if self.RS[inst].Vj < self.RS[inst].Vk else self.pc
         elif self.RS[inst].op == "BGT":
-            pass
+            return self.RS[inst].A if self.RS[inst].Vj > self.RS[inst].Vk else self.pc
         elif self.RS[inst].op == "BEQ":
-            pass
+            return self.RS[inst].A if self.RS[inst].Vj == self.RS[inst].Vk else self.pc
         elif self.RS[inst].op == "BNE":
-            pass
+            return self.RS[inst].A if self.RS[inst].Vj != self.RS[inst].Vk else self.pc
         elif self.RS[inst].op == "J":
-            pass
+            return self.RS[inst].A
         else:
             pass
 
@@ -239,17 +287,20 @@ class Tomasulo:
         for unit in self.addUnit:
             if unit.busy and self.RS[unit.inst].exec == 0:
                 v : int = self.execute(unit.inst)
-                for register in self.registerStat:
-                    if register.Qi == unit.inst:
-                        register.Qi = None
-                        register.value = v
-                for rs in self.RS:
-                    if rs.Qj == unit.inst:
-                        rs.Vj = v
-                        rs.Qj = None
-                    if rs.Qk == unit.inst:
-                        rs.Vk = v
-                        rs.Qk = None
+                if self.RS[unit.inst].op in DESVIO:
+                    self.pc = v
+                else:
+                    for register in self.registerStat:
+                        if register.Qi == unit.inst:
+                            register.Qi = None
+                            register.value = v
+                    for rs in self.RS:
+                        if rs.Qj == unit.inst:
+                            rs.Vj = v
+                            rs.Qj = None
+                        if rs.Qk == unit.inst:
+                            rs.Vk = v
+                            rs.Qk = None
                 self.instrucoes -= 1
                 self.RS[unit.inst] = ReservationStation()
                 unit.busy = False
@@ -285,13 +336,13 @@ class Tomasulo:
                         if register.Qi == unit.inst:
                             register.Qi = None
                             register.value = v
-                    for rs in self.RS:
-                        if rs.Qj == unit.inst:
-                            rs.Vj = v
-                            rs.Qj = None
-                        if rs.Qk == unit.inst:
-                            rs.Vk = v
-                            rs.Qk = None
+                for rs in self.RS:
+                    if rs.Qj == unit.inst:
+                        rs.Vj = v
+                        rs.Qj = None
+                    if rs.Qk == unit.inst:
+                        rs.Vk = v
+                        rs.Qk = None
                 self.instrucoes -= 1
                 self.RS[unit.inst] = ReservationStation()
                 unit.busy = False
@@ -316,6 +367,27 @@ class Tomasulo:
         print("Mem | Qi | Value")
         for i in range(5):
             print("{:2d} | {!r:5} | {:3d} ".format(i, self.memory[i].Qi, self.memory[i].value))
+        
+        outputFile.write("Clock: {}\n".format(self.clock))
+        outputFile.write("    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |\n")
+        for i in range(16):
+            if self.RS[i].busy:
+                outputFile.write("ADD  | {:2d} | {!r:5} | {!r:5} | {!r:6s} | {!r:5} | {!r:5} | {!r:5} | {!r:5} | {!r:5} |\n".format(i, self.RS[i].busy, self.RS[i].exec, self.RS[i].op, self.RS[i].Vj, self.RS[i].Vk, self.RS[i].Qj, self.RS[i].Qk, self.RS[i].A))
+        for i in range(16, 32):
+            if self.RS[i].busy:
+                outputFile.write("MUL  | {:2d} | {!r:5} | {!r:5} | {!r:6s} | {!r:5} | {!r:5} | {!r:5} | {!r:5} | {!r:5} |\n".format(i, self.RS[i].busy, self.RS[i].exec, self.RS[i].op, self.RS[i].Vj, self.RS[i].Vk, self.RS[i].Qj, self.RS[i].Qk, self.RS[i].A))
+        for i in range(32, 48):
+            if self.RS[i].busy:
+                outputFile.write("LOAD | {:2d} | {!r:5} | {!r:5} | {!r:6s} | {!r:5} | {!r:5} | {!r:5} | {!r:5} | {!r:5} |\n".format(i, self.RS[i].busy, self.RS[i].exec, self.RS[i].op, self.RS[i].Vj, self.RS[i].Vk, self.RS[i].Qj, self.RS[i].Qk, self.RS[i].A))
+        outputFile.write("\nRegistradores:\n")
+        outputFile.write("Reg | Qi | Value\n")
+        for i in range(11):
+            outputFile.write("{:2d} | {!r:5} | {:3d} \n".format(i, self.registerStat[i].Qi, self.registerStat[i].value))
+        outputFile.write("\nMemoria:\n")
+        outputFile.write("Mem | Qi | Value\n")
+        for i in range(5):
+            outputFile.write("{:2d} | {!r:5} | {:3d} \n".format(i, self.memory[i].Qi, self.memory[i].value))
+        outputFile.write("\n")
         """
         print("\nUnidades:")
         print("ADD\nUnit | BUSY  | Inst")
@@ -330,37 +402,30 @@ class Tomasulo:
         """
 
     # Executa o algoritmo de Tomasulo
-    #  TODO: A principio essa seria a função principal
     def run(self):
-        #for inst in self.instQueue:
+        #for inst in self.instList:
         #    print(inst)
-        inst = self.search()
-        while self.pc < len(self.instQueue):
-            self.clock += 1
-            self.printStatus()
-            input()
-            self.issue(inst)
-            self.write()
-            self.setUnits()
-            inst = self.search()
-        self.clock += 1
+        self.search()
         self.printStatus()
-        input()
-        self.issue(inst)
+        self.clock += 1
+        # input()
+        self.issue()
         while self.instrucoes > 0:
             self.write()
             self.setUnits()
-            self.clock += 1
             self.printStatus()
-            input()
+            self.search()
+            self.clock += 1
+            # input()
+            self.issue()
 
-def lexer(inputFile : TextIO) -> Deque[List[str]]:
-    instQueue : Deque[str] = deque()
+def lexer(inputFile : TextIO) -> List[List[str]]:
+    instList : List[str] = []
     
     for line in inputFile:
-        instQueue.append(line.replace(',', '').split()) # TODO: retirar o replace caso entrada não possua ','
+        instList.append(line.replace(',', '').split()) # TODO: retirar o replace caso entrada não possua ','
 
-    return instQueue
+    return instList
 
 def main():
     try:
@@ -369,24 +434,11 @@ def main():
         print("Arquivo de leitura não encontrado")
         sys.exit()
     
-    instQueue : Deque[List[str]] = lexer(inputFile)
-
-    tomasulo = Tomasulo(instQueue)
+    instList : List[List[str]] = lexer(inputFile)
+    
+    tomasulo = Tomasulo(instList)
 
     tomasulo.run()
 
 if __name__ == "__main__":
     main()
-
-def reversed_string(a_string):
-    return a_string[::-1]
-
-def lychrel(n):
-    s = str(n)
-    if s == reversed_string(s):
-        print(s + " é palindromo")
-        return n
-    m = int(reversed_string(s))
-    c = m + n
-    print(s + " + " + str(m) + " = " + str(c))
-    return lychrel(c)
