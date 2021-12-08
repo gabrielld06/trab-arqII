@@ -25,17 +25,17 @@ Mem | Qi | Value
 
 Clock: 1
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-LOAD | 32 | True  | 5     | 'LW'   | 0     | None  | None  | None  | 30    |
+ADD  |  0 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 1     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
+ 1 | 0     |   0 
  2 | None  |   0 
  3 | None  |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 32    |   0 
+ 6 | None  |   0 
  7 | None  |   0 
  8 | None  |   0 
  9 | None  |   0 
@@ -51,18 +51,18 @@ Mem | Qi | Value
 
 Clock: 2
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-LOAD | 32 | True  | 4     | 'LW'   | 0     | None  | None  | None  | 30    |
-LOAD | 33 | True  | 5     | 'LW'   | 0     | None  | None  | None  | 4     |
+ADD  |  0 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 1     |
+ADD  |  1 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 6     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | 33    |   0 
+ 1 | 0     |   0 
+ 2 | 1     |   0 
  3 | None  |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 32    |   0 
+ 6 | None  |   0 
  7 | None  |   0 
  8 | None  |   0 
  9 | None  |   0 
@@ -78,19 +78,19 @@ Mem | Qi | Value
 
 Clock: 3
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 16 | True  | -1    | 'MUL'  | None  | 0     | 33    | None  | None  |
-LOAD | 32 | True  | 3     | 'LW'   | 0     | None  | None  | None  | 30    |
-LOAD | 33 | True  | 4     | 'LW'   | 0     | None  | None  | None  | 4     |
+ADD  |  0 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 1     |
+ADD  |  1 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 6     |
+ADD  |  2 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 0     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | 33    |   0 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 0     |   0 
+ 2 | 1     |   0 
+ 3 | 2     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 32    |   0 
+ 6 | None  |   0 
  7 | None  |   0 
  8 | None  |   0 
  9 | None  |   0 
@@ -106,22 +106,22 @@ Mem | Qi | Value
 
 Clock: 4
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | -1    | 'SUB'  | None  | None  | 32    | 33    | None  |
-MUL  | 16 | True  | -1    | 'MUL'  | None  | 0     | 33    | None  | None  |
-LOAD | 32 | True  | 2     | 'LW'   | 0     | None  | None  | None  | 30    |
-LOAD | 33 | True  | 3     | 'LW'   | 0     | None  | None  | None  | 4     |
+ADD  |  0 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 1     |
+ADD  |  1 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 6     |
+ADD  |  2 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 0     |
+ADD  |  3 | True  | -1    | 'ADD'  | None  | None  | 2     | 0     | None  |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | 33    |   0 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 0     |   0 
+ 2 | 1     |   0 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 32    |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
 10 | None  |   0 
 
@@ -135,25 +135,25 @@ Mem | Qi | Value
 
 Clock: 5
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | -1    | 'SUB'  | None  | None  | 32    | 33    | None  |
-MUL  | 16 | True  | -1    | 'MUL'  | None  | 0     | 33    | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | None  | 16    | 32    | None  |
-LOAD | 32 | True  | 1     | 'LW'   | 0     | None  | None  | None  | 30    |
-LOAD | 33 | True  | 2     | 'LW'   | 0     | None  | None  | None  | 4     |
+ADD  |  0 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 1     |
+ADD  |  1 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 6     |
+ADD  |  2 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 0     |
+ADD  |  3 | True  | -1    | 'ADD'  | None  | None  | 2     | 0     | None  |
+ADD  |  4 | True  | -1    | 'ADDI' | None  | 0     | 0     | None  | 1     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | 33    |   0 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | 1     |   0 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 32    |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -165,26 +165,26 @@ Mem | Qi | Value
 
 Clock: 6
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | -1    | 'SUB'  | None  | None  | 32    | 33    | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | None  | 0     | 33    | None  |
-MUL  | 16 | True  | -1    | 'MUL'  | None  | 0     | 33    | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | None  | 16    | 32    | None  |
-LOAD | 32 | True  | 0     | 'LW'   | 0     | None  | None  | None  | 30    |
-LOAD | 33 | True  | 1     | 'LW'   | 0     | None  | None  | None  | 4     |
+ADD  |  0 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 1     |
+ADD  |  1 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 6     |
+ADD  |  2 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 0     |
+ADD  |  3 | True  | -1    | 'ADD'  | None  | None  | 2     | 0     | None  |
+ADD  |  4 | True  | -1    | 'ADDI' | None  | 0     | 0     | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | None  | 4     | 1     | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | 33    |   0 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | 1     |   0 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -196,25 +196,25 @@ Mem | Qi | Value
 
 Clock: 7
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | -1    | 'SUB'  | 30    | None  | None  | 33    | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | None  | 0     | 33    | None  |
-MUL  | 16 | True  | -1    | 'MUL'  | None  | 0     | 33    | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
-LOAD | 33 | True  | 0     | 'LW'   | 0     | None  | None  | None  | 4     |
+ADD  |  1 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 6     |
+ADD  |  2 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 0     |
+ADD  |  3 | True  | -1    | 'ADD'  | None  | 1     | 2     | None  | None  |
+ADD  |  4 | True  | 5     | 'ADDI' | 1     | 0     | None  | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | None  | 4     | 1     | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | 33    |   0 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | 1     |   0 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -226,24 +226,24 @@ Mem | Qi | Value
 
 Clock: 8
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | 5     | 'SUB'  | 30    | 4     | None  | None  | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | 4     | 0     | None  | None  |
-MUL  | 16 | True  | 15    | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  2 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 0     |
+ADD  |  3 | True  | -1    | 'ADD'  | None  | 1     | 2     | None  | None  |
+ADD  |  4 | True  | 4     | 'ADDI' | 1     | 0     | None  | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | 6     | 4     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -255,24 +255,23 @@ Mem | Qi | Value
 
 Clock: 9
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | 4     | 'SUB'  | 30    | 4     | None  | None  | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | 4     | 0     | None  | None  |
-MUL  | 16 | True  | 14    | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  3 | True  | 5     | 'ADD'  | 0     | 1     | None  | None  | None  |
+ADD  |  4 | True  | 3     | 'ADDI' | 1     | 0     | None  | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | 6     | 4     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -284,24 +283,23 @@ Mem | Qi | Value
 
 Clock: 10
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | 3     | 'SUB'  | 30    | 4     | None  | None  | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | 4     | 0     | None  | None  |
-MUL  | 16 | True  | 13    | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  3 | True  | 4     | 'ADD'  | 0     | 1     | None  | None  | None  |
+ADD  |  4 | True  | 2     | 'ADDI' | 1     | 0     | None  | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | 6     | 4     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -313,24 +311,23 @@ Mem | Qi | Value
 
 Clock: 11
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | 2     | 'SUB'  | 30    | 4     | None  | None  | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | 4     | 0     | None  | None  |
-MUL  | 16 | True  | 12    | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  3 | True  | 3     | 'ADD'  | 0     | 1     | None  | None  | None  |
+ADD  |  4 | True  | 1     | 'ADDI' | 1     | 0     | None  | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | 6     | 4     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -342,24 +339,23 @@ Mem | Qi | Value
 
 Clock: 12
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | 1     | 'SUB'  | 30    | 4     | None  | None  | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | 4     | 0     | None  | None  |
-MUL  | 16 | True  | 11    | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  3 | True  | 2     | 'ADD'  | 0     | 1     | None  | None  | None  |
+ADD  |  4 | True  | 0     | 'ADDI' | 1     | 0     | None  | None  | 1     |
+ADD  |  5 | True  | -1    | 'BLT'  | None  | 6     | 4     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 4     |   0 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -371,24 +367,22 @@ Mem | Qi | Value
 
 Clock: 13
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  0 | True  | 0     | 'SUB'  | 30    | 4     | None  | None  | None  |
-ADD  |  1 | True  | -1    | 'ADD'  | None  | 4     | 0     | None  | None  |
-MUL  | 16 | True  | 10    | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  3 | True  | 1     | 'ADD'  | 0     | 1     | None  | None  | None  |
+ADD  |  5 | True  | 5     | 'BLT'  | 2     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | 0     |   0 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -400,23 +394,22 @@ Mem | Qi | Value
 
 Clock: 14
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  1 | True  | 5     | 'ADD'  | 26    | 4     | None  | None  | None  |
-MUL  | 16 | True  | 9     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  3 | True  | 0     | 'ADD'  | 0     | 1     | None  | None  | None  |
+ADD  |  5 | True  | 4     | 'BLT'  | 2     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | 3     |   0 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -428,23 +421,21 @@ Mem | Qi | Value
 
 Clock: 15
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  1 | True  | 4     | 'ADD'  | 26    | 4     | None  | None  | None  |
-MUL  | 16 | True  | 8     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  5 | True  | 3     | 'BLT'  | 2     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | None  |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -456,23 +447,21 @@ Mem | Qi | Value
 
 Clock: 16
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  1 | True  | 3     | 'ADD'  | 26    | 4     | None  | None  | None  |
-MUL  | 16 | True  | 7     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  5 | True  | 2     | 'BLT'  | 2     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | None  |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -484,23 +473,21 @@ Mem | Qi | Value
 
 Clock: 17
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  1 | True  | 2     | 'ADD'  | 26    | 4     | None  | None  | None  |
-MUL  | 16 | True  | 6     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  5 | True  | 1     | 'BLT'  | 2     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | None  |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -512,23 +499,21 @@ Mem | Qi | Value
 
 Clock: 18
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  1 | True  | 1     | 'ADD'  | 26    | 4     | None  | None  | None  |
-MUL  | 16 | True  | 5     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  5 | True  | 0     | 'BLT'  | 2     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | None  |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -540,23 +525,20 @@ Mem | Qi | Value
 
 Clock: 19
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-ADD  |  1 | True  | 0     | 'ADD'  | 26    | 4     | None  | None  | None  |
-MUL  | 16 | True  | 4     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | None  |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | 1     |   0 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -568,22 +550,21 @@ Mem | Qi | Value
 
 Clock: 20
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 16 | True  | 3     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  0 | True  | 5     | 'ADD'  | 1     | 2     | None  | None  | None  |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | None  |   2 
+ 2 | None  |   6 
+ 3 | 0     |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -595,22 +576,22 @@ Mem | Qi | Value
 
 Clock: 21
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 16 | True  | 2     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  0 | True  | 4     | 'ADD'  | 1     | 2     | None  | None  | None  |
+ADD  |  1 | True  | 5     | 'ADDI' | 2     | 0     | None  | None  | 1     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 1     |   2 
+ 2 | None  |   6 
+ 3 | 0     |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -622,22 +603,23 @@ Mem | Qi | Value
 
 Clock: 22
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 16 | True  | 1     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  0 | True  | 3     | 'ADD'  | 1     | 2     | None  | None  | None  |
+ADD  |  1 | True  | 4     | 'ADDI' | 2     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 1     |   2 
+ 2 | None  |   6 
+ 3 | 0     |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -649,22 +631,23 @@ Mem | Qi | Value
 
 Clock: 23
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 16 | True  | 0     | 'MUL'  | 4     | 0     | None  | None  | None  |
-MUL  | 17 | True  | -1    | 'DIV'  | None  | 30    | 16    | None  | None  |
+ADD  |  0 | True  | 2     | 'ADD'  | 1     | 2     | None  | None  | None  |
+ADD  |  1 | True  | 3     | 'ADDI' | 2     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
- 0 | 16    |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 0 | None  |   0 
+ 1 | 1     |   2 
+ 2 | None  |   6 
+ 3 | 0     |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -676,21 +659,23 @@ Mem | Qi | Value
 
 Clock: 24
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 25    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 1     | 'ADD'  | 1     | 2     | None  | None  | None  |
+ADD  |  1 | True  | 2     | 'ADDI' | 2     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   2 
+ 2 | None  |   6 
+ 3 | 0     |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -702,21 +687,23 @@ Mem | Qi | Value
 
 Clock: 25
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 24    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 0     | 'ADD'  | 1     | 2     | None  | None  | None  |
+ADD  |  1 | True  | 1     | 'ADDI' | 2     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   2 
+ 2 | None  |   6 
+ 3 | 0     |   1 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -728,21 +715,22 @@ Mem | Qi | Value
 
 Clock: 26
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 23    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  1 | True  | 0     | 'ADDI' | 2     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   2 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -754,21 +742,21 @@ Mem | Qi | Value
 
 Clock: 27
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 22    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 5     | 'BLT'  | 3     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -780,21 +768,21 @@ Mem | Qi | Value
 
 Clock: 28
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 21    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 4     | 'BLT'  | 3     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -806,21 +794,21 @@ Mem | Qi | Value
 
 Clock: 29
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 20    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 3     | 'BLT'  | 3     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -832,21 +820,21 @@ Mem | Qi | Value
 
 Clock: 30
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 19    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 2     | 'BLT'  | 3     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -858,21 +846,21 @@ Mem | Qi | Value
 
 Clock: 31
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 18    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 1     | 'BLT'  | 3     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -884,21 +872,21 @@ Mem | Qi | Value
 
 Clock: 32
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 17    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 0     | 'BLT'  | 3     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -910,21 +898,20 @@ Mem | Qi | Value
 
 Clock: 33
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 16    | 'DIV'  | 0     | 30    | None  | None  | None  |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | None  |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -936,21 +923,21 @@ Mem | Qi | Value
 
 Clock: 34
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 15    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 5     | 'ADD'  | 3     | 3     | None  | None  | None  |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   3 
+ 2 | None  |   6 
+ 3 | 0     |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -962,21 +949,22 @@ Mem | Qi | Value
 
 Clock: 35
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 14    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 4     | 'ADD'  | 3     | 3     | None  | None  | None  |
+ADD  |  1 | True  | 5     | 'ADDI' | 3     | 0     | None  | None  | 1     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   3 
+ 2 | None  |   6 
+ 3 | 0     |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -988,21 +976,23 @@ Mem | Qi | Value
 
 Clock: 36
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 13    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 3     | 'ADD'  | 3     | 3     | None  | None  | None  |
+ADD  |  1 | True  | 4     | 'ADDI' | 3     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   3 
+ 2 | None  |   6 
+ 3 | 0     |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1014,21 +1004,23 @@ Mem | Qi | Value
 
 Clock: 37
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 12    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 2     | 'ADD'  | 3     | 3     | None  | None  | None  |
+ADD  |  1 | True  | 3     | 'ADDI' | 3     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   3 
+ 2 | None  |   6 
+ 3 | 0     |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1040,21 +1032,23 @@ Mem | Qi | Value
 
 Clock: 38
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 11    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 1     | 'ADD'  | 3     | 3     | None  | None  | None  |
+ADD  |  1 | True  | 2     | 'ADDI' | 3     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   3 
+ 2 | None  |   6 
+ 3 | 0     |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1066,21 +1060,23 @@ Mem | Qi | Value
 
 Clock: 39
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 10    | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 0     | 'ADD'  | 3     | 3     | None  | None  | None  |
+ADD  |  1 | True  | 1     | 'ADDI' | 3     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   3 
+ 2 | None  |   6 
+ 3 | 0     |   3 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1092,21 +1088,22 @@ Mem | Qi | Value
 
 Clock: 40
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 9     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  1 | True  | 0     | 'ADDI' | 3     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   3 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1118,21 +1115,21 @@ Mem | Qi | Value
 
 Clock: 41
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 8     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 5     | 'BLT'  | 4     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1144,21 +1141,21 @@ Mem | Qi | Value
 
 Clock: 42
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 7     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 4     | 'BLT'  | 4     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1170,21 +1167,21 @@ Mem | Qi | Value
 
 Clock: 43
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 6     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 3     | 'BLT'  | 4     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1196,21 +1193,21 @@ Mem | Qi | Value
 
 Clock: 44
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 5     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 2     | 'BLT'  | 4     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1222,21 +1219,21 @@ Mem | Qi | Value
 
 Clock: 45
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 4     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 1     | 'BLT'  | 4     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1248,21 +1245,21 @@ Mem | Qi | Value
 
 Clock: 46
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 3     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  2 | True  | 0     | 'BLT'  | 4     | 6     | None  | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1274,21 +1271,20 @@ Mem | Qi | Value
 
 Clock: 47
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 2     | 'DIV'  | 0     | 30    | None  | None  | None  |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | None  |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1300,21 +1296,21 @@ Mem | Qi | Value
 
 Clock: 48
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 1     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 5     | 'ADD'  | 6     | 4     | None  | None  | None  |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | None  |   4 
+ 2 | None  |   6 
+ 3 | 0     |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1326,21 +1322,22 @@ Mem | Qi | Value
 
 Clock: 49
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
-MUL  | 17 | True  | 0     | 'DIV'  | 0     | 30    | None  | None  | None  |
+ADD  |  0 | True  | 4     | 'ADD'  | 6     | 4     | None  | None  | None  |
+ADD  |  1 | True  | 5     | 'ADDI' | 4     | 0     | None  | None  | 1     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   4 
+ 2 | None  |   6 
+ 3 | 0     |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
-10 | 17    |   0 
+10 | None  |   0 
 
 Memoria:
 Mem | Qi | Value
@@ -1352,18 +1349,21 @@ Mem | Qi | Value
 
 Clock: 50
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 3     | 'ADD'  | 6     | 4     | None  | None  | None  |
+ADD  |  1 | True  | 4     | 'ADDI' | 4     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
 
 Registradores:
 Reg | Qi | Value
  0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   4 
- 3 | None  |   0 
+ 1 | 1     |   4 
+ 2 | None  |   6 
+ 3 | 0     |   6 
  4 | None  |   0 
  5 | None  |   0 
- 6 | None  |  30 
+ 6 | None  |   0 
  7 | None  |   0 
- 8 | None  |  26 
+ 8 | None  |   0 
  9 | None  |   0 
 10 | None  |   0 
 
@@ -1374,4 +1374,881 @@ Mem | Qi | Value
  2 | None  |   0 
  3 | None  |   0 
  4 | None  |   0 
+
+Clock: 51
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 2     | 'ADD'  | 6     | 4     | None  | None  | None  |
+ADD  |  1 | True  | 3     | 'ADDI' | 4     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   4 
+ 2 | None  |   6 
+ 3 | 0     |   6 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 52
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 1     | 'ADD'  | 6     | 4     | None  | None  | None  |
+ADD  |  1 | True  | 2     | 'ADDI' | 4     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   4 
+ 2 | None  |   6 
+ 3 | 0     |   6 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 53
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 0     | 'ADD'  | 6     | 4     | None  | None  | None  |
+ADD  |  1 | True  | 1     | 'ADDI' | 4     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   4 
+ 2 | None  |   6 
+ 3 | 0     |   6 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 54
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  1 | True  | 0     | 'ADDI' | 4     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   4 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 55
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 5     | 'BLT'  | 5     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 56
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 4     | 'BLT'  | 5     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 57
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 3     | 'BLT'  | 5     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 58
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 2     | 'BLT'  | 5     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 59
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 1     | 'BLT'  | 5     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 60
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 0     | 'BLT'  | 5     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 61
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | None  |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 62
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 5     | 'ADD'  | 10    | 5     | None  | None  | None  |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   5 
+ 2 | None  |   6 
+ 3 | 0     |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 63
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 4     | 'ADD'  | 10    | 5     | None  | None  | None  |
+ADD  |  1 | True  | 5     | 'ADDI' | 5     | 0     | None  | None  | 1     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   5 
+ 2 | None  |   6 
+ 3 | 0     |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 64
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 3     | 'ADD'  | 10    | 5     | None  | None  | None  |
+ADD  |  1 | True  | 4     | 'ADDI' | 5     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   5 
+ 2 | None  |   6 
+ 3 | 0     |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 65
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 2     | 'ADD'  | 10    | 5     | None  | None  | None  |
+ADD  |  1 | True  | 3     | 'ADDI' | 5     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   5 
+ 2 | None  |   6 
+ 3 | 0     |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 66
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 1     | 'ADD'  | 10    | 5     | None  | None  | None  |
+ADD  |  1 | True  | 2     | 'ADDI' | 5     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   5 
+ 2 | None  |   6 
+ 3 | 0     |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 67
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 0     | 'ADD'  | 10    | 5     | None  | None  | None  |
+ADD  |  1 | True  | 1     | 'ADDI' | 5     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   5 
+ 2 | None  |   6 
+ 3 | 0     |  10 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 68
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  1 | True  | 0     | 'ADDI' | 5     | 0     | None  | None  | 1     |
+ADD  |  2 | True  | -1    | 'BLT'  | None  | 6     | 1     | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | 1     |   5 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 69
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 5     | 'BLT'  | 6     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 70
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 4     | 'BLT'  | 6     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 71
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 3     | 'BLT'  | 6     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 72
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 2     | 'BLT'  | 6     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 73
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 1     | 'BLT'  | 6     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 74
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  2 | True  | 0     | 'BLT'  | 6     | 6     | None  | None  | 3     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 75
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 76
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | 0     |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |   0 
+
+Clock: 77
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 5     | 'SW'   | 15    | None  | None  | None  | 0     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | 0     |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | 32    |   0 
+
+Clock: 78
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 4     | 'SW'   | 15    | None  | None  | None  | 0     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | 0     |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | 32    |   0 
+
+Clock: 79
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 3     | 'SW'   | 15    | None  | None  | None  | 0     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | 0     |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | 32    |   0 
+
+Clock: 80
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 2     | 'SW'   | 15    | None  | None  | None  | 0     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | 0     |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | 32    |   0 
+
+Clock: 81
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+ADD  |  0 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 1     | 'SW'   | 15    | None  | None  | None  | 0     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | 0     |   0 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | 32    |   0 
+
+Clock: 82
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+LOAD | 32 | True  | 0     | 'SW'   | 15    | None  | None  | None  | 0     |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   7 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | 32    |   0 
+
+Clock: 83
+    RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
+
+Registradores:
+Reg | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   6 
+ 2 | None  |   6 
+ 3 | None  |  15 
+ 4 | None  |   7 
+ 5 | None  |   0 
+ 6 | None  |   0 
+ 7 | None  |   0 
+ 8 | None  |   0 
+ 9 | None  |   0 
+10 | None  |   0 
+
+Memoria:
+Mem | Qi | Value
+ 0 | None  |   0 
+ 1 | None  |   0 
+ 2 | None  |   0 
+ 3 | None  |   0 
+ 4 | None  |  15 
 
