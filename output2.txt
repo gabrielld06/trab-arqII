@@ -1,167 +1,263 @@
 Clock: 0
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
- 5 | None  |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 1
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  0 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 5     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | 0     |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
- 5 | None  |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | 0     |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 2
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  0 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 5     |
-LOAD | 32 | True  | 5     | 'SW'   | 0     | None  | None  | None  | 3     |
+LOAD | 32 | True  | -1    | 'SW'   | None  | None  | 0     | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | 0     |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
- 5 | None  |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | 0     |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | 32    |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 3
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  0 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 5     |
-LOAD | 32 | True  | 4     | 'SW'   | 0     | None  | None  | None  | 3     |
+LOAD | 32 | True  | -1    | 'SW'   | None  | None  | 0     | None  | 3     |
 LOAD | 33 | True  | 5     | 'LW'   | 0     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | 0     |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
- 5 | 33    |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | 0     |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | 33    |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | 32    |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 4
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  0 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 5     |
 ADD  |  1 | True  | -1    | 'ADDI' | None  | 0     | 0     | None  | 3     |
-LOAD | 32 | True  | 3     | 'SW'   | 0     | None  | None  | None  | 3     |
+LOAD | 32 | True  | -1    | 'SW'   | None  | None  | 0     | None  | 3     |
 LOAD | 33 | True  | 4     | 'LW'   | 0     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | 0     |   0 
- 2 | 1     |   0 
- 3 | None  |   0 
- 4 | None  |   0 
- 5 | 33    |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | 0     |   0 
+  2 | 1     |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | 33    |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | 32    |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 5
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  0 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 5     |
 ADD  |  1 | True  | -1    | 'ADDI' | None  | 0     | 0     | None  | 3     |
 ADD  |  2 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 2     |
-LOAD | 32 | True  | 2     | 'SW'   | 0     | None  | None  | None  | 3     |
+LOAD | 32 | True  | -1    | 'SW'   | None  | None  | 0     | None  | 3     |
 LOAD | 33 | True  | 3     | 'LW'   | 0     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | 0     |   0 
- 2 | 1     |   0 
- 3 | 2     |   0 
- 4 | None  |   0 
- 5 | 33    |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | 0     |   0 
+  2 | 1     |   0 
+  3 | 2     |   0 
+  4 | None  |   0 
+  5 | 33    |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | 32    |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 6
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
@@ -169,221 +265,354 @@ ADD  |  0 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 5     |
 ADD  |  1 | True  | -1    | 'ADDI' | None  | 0     | 0     | None  | 3     |
 ADD  |  2 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 2     |
 ADD  |  3 | True  | 5     | 'ADDI' | 0     | 0     | None  | None  | 7     |
-LOAD | 32 | True  | 1     | 'SW'   | 0     | None  | None  | None  | 3     |
+LOAD | 32 | True  | -1    | 'SW'   | None  | None  | 0     | None  | 3     |
 LOAD | 33 | True  | 2     | 'LW'   | 0     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | 0     |   0 
- 2 | 1     |   0 
- 3 | 2     |   0 
- 4 | 3     |   0 
- 5 | 33    |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | 0     |   0 
+  2 | 1     |   0 
+  3 | 2     |   0 
+  4 | 3     |   0 
+  5 | 33    |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | 32    |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 7
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  1 | True  | 5     | 'ADDI' | 5     | 0     | None  | None  | 3     |
 ADD  |  2 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 2     |
 ADD  |  3 | True  | 4     | 'ADDI' | 0     | 0     | None  | None  | 7     |
-LOAD | 32 | True  | 0     | 'SW'   | 0     | None  | None  | None  | 3     |
+LOAD | 32 | True  | 5     | 'SW'   | 5     | None  | None  | None  | 3     |
 LOAD | 33 | True  | 1     | 'LW'   | 0     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | 1     |   0 
- 3 | 2     |   0 
- 4 | 3     |   0 
- 5 | 33    |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | 1     |   0 
+  3 | 2     |   0 
+  4 | 3     |   0 
+  5 | 33    |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | 32    |   0 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 8
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  1 | True  | 4     | 'ADDI' | 5     | 0     | None  | None  | 3     |
 ADD  |  2 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 2     |
 ADD  |  3 | True  | 3     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 4     | 'SW'   | 5     | None  | None  | None  | 3     |
 LOAD | 33 | True  | 0     | 'LW'   | 0     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | 1     |   0 
- 3 | 2     |   0 
- 4 | 3     |   0 
- 5 | 33    |   0 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | 1     |   0 
+  3 | 2     |   0 
+  4 | 3     |   0 
+  5 | 33    |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   3 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 9
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  1 | True  | 3     | 'ADDI' | 5     | 0     | None  | None  | 3     |
 ADD  |  2 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 2     |
 ADD  |  3 | True  | 2     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 3     | 'SW'   | 5     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | 1     |   0 
- 3 | 2     |   0 
- 4 | 3     |   0 
- 5 | None  |   3 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | 1     |   0 
+  3 | 2     |   0 
+  4 | 3     |   0 
+  5 | None  |   3 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   3 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 10
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  1 | True  | 2     | 'ADDI' | 5     | 0     | None  | None  | 3     |
 ADD  |  2 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 2     |
 ADD  |  3 | True  | 1     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 2     | 'SW'   | 5     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | 1     |   0 
- 3 | 2     |   0 
- 4 | 3     |   0 
- 5 | None  |   3 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | 1     |   0 
+  3 | 2     |   0 
+  4 | 3     |   0 
+  5 | None  |   3 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   3 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 11
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  1 | True  | 1     | 'ADDI' | 5     | 0     | None  | None  | 3     |
 ADD  |  3 | True  | 0     | 'ADDI' | 0     | 0     | None  | None  | 7     |
+LOAD | 32 | True  | 1     | 'SW'   | 5     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | 1     |   0 
- 3 | None  |   2 
- 4 | 3     |   0 
- 5 | None  |   3 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | 1     |   0 
+  3 | None  |   2 
+  4 | 3     |   0 
+  5 | None  |   3 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   3 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 12
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 ADD  |  1 | True  | 0     | 'ADDI' | 5     | 0     | None  | None  | 3     |
+LOAD | 32 | True  | 0     | 'SW'   | 5     | None  | None  | None  | 3     |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | 1     |   0 
- 3 | None  |   2 
- 4 | None  |   7 
- 5 | None  |   3 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | 1     |   0 
+  3 | None  |   2 
+  4 | None  |   7 
+  5 | None  |   3 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   3 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | 32    |   0 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
 Clock: 13
     RS    | BUSY  | Clock |   OP   |   Vj  |   Vk  |   Qj  |   Qk  |   A   |
 
-Registradores:
+16 Primeiros Registradores:
 Reg | Qi | Value
- 0 | None  |   0 
- 1 | None  |   5 
- 2 | None  |   8 
- 3 | None  |   2 
- 4 | None  |   7 
- 5 | None  |   3 
- 6 | None  |   0 
- 7 | None  |   0 
- 8 | None  |   0 
- 9 | None  |   0 
-10 | None  |   0 
+  0 | None  |   0 
+  1 | None  |   5 
+  2 | None  |   8 
+  3 | None  |   2 
+  4 | None  |   7 
+  5 | None  |   3 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 
-Memoria:
+16 Primeiras Celulas de Memoria:
 Mem | Qi | Value
- 0 | None  |   0 
- 1 | None  |   3 
- 2 | None  |   0 
- 3 | None  |   0 
- 4 | None  |   0 
+  0 | None  |   8 
+  1 | None  |   0 
+  2 | None  |   0 
+  3 | None  |   0 
+  4 | None  |   0 
+  5 | None  |   0 
+  6 | None  |   0 
+  7 | None  |   0 
+  8 | None  |   0 
+  9 | None  |   0 
+ 10 | None  |   0 
+ 11 | None  |   0 
+ 12 | None  |   0 
+ 13 | None  |   0 
+ 14 | None  |   0 
+ 15 | None  |   0 
 

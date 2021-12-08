@@ -159,7 +159,6 @@ class Tomasulo:
                 self.RS[r].busy = True
                 self.registerStat[rd].Qi = r
             elif op == "SW":
-                print(inst)
                 rs = int(inst[1][1:])
                 imm, rd = inst[2].replace("(", " ").replace(")", " ").split()
                 imm = int(imm)
@@ -326,7 +325,6 @@ class Tomasulo:
         for unit in self.ldUnit:
             if unit.busy and self.RS[unit.inst].exec == 0:
                 v : int = self.execute(unit.inst)
-                print(v)
                 if self.RS[unit.inst].op == "SW":
                     for memory in self.memory:
                         if memory.Qi == unit.inst:
@@ -387,12 +385,12 @@ class Tomasulo:
         print("\n16 Primeiros Registradores:")
         print("Reg | Qi | Value")
         for i in range(16):
-            print("{:2d} | {!r:5} | {:3d} ".format(i, self.registerStat[i].Qi, self.registerStat[i].value))
+            print("{:3d} | {!r:5} | {:3d} ".format(i, self.registerStat[i].Qi, self.registerStat[i].value))
        
         print("\n16 Primeiras Celulas de Memoria:")
         print("Mem | Qi | Value")
         for i in range(16):
-            print("{:2d} | {!r:5} | {:3d} ".format(i, self.memory[i].Qi, self.memory[i].value))
+            print("{:3d} | {!r:5} | {:3d} ".format(i, self.memory[i].Qi, self.memory[i].value))
     
     # Escreve no arquivo "output.txt" o status das Estações de Reserva ocupadas, 
     # dos 16 Primeiros Registradores e das 16 Primeiras Celulas de Memoria
@@ -412,18 +410,20 @@ class Tomasulo:
         outputFile.write("\n16 Primeiros Registradores:\n")
         outputFile.write("Reg | Qi | Value\n")
         for i in range(16):
-            outputFile.write("{:2d} | {!r:5} | {:3d} \n".format(i, self.registerStat[i].Qi, self.registerStat[i].value))
+            outputFile.write("{:3d} | {!r:5} | {:3d} \n".format(i, self.registerStat[i].Qi, self.registerStat[i].value))
         
         outputFile.write("\n16 Primeiras Celulas de Memoria:\n")
         outputFile.write("Mem | Qi | Value\n")
         for i in range(16):
-            outputFile.write("{:2d} | {!r:5} | {:3d} \n".format(i, self.memory[i].Qi, self.memory[i].value))
+            outputFile.write("{:3d} | {!r:5} | {:3d} \n".format(i, self.memory[i].Qi, self.memory[i].value))
         outputFile.write("\n")
 
     # Executa o algoritmo de Tomasulo
     def run(self) -> None:
         self.search()
         self.printStatus()
+        # self.printBusyStatus()
+        # self.writeOutputFile()
         self.clock += 1
         input()
         self.issue()
