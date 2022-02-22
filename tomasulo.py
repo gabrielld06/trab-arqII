@@ -6,6 +6,7 @@ ARITMETICA : List[str] = ["ADD", "ADDI", "SUB", "SUBI", "MUL", "DIV"]
 LOGICA : List[str] = ["AND", "OR", "NOT"]
 DESVIO : List[str] = ["BLT", "BGT", "BEQ","BNE", "J"]
 MEMORIA : List[str] = ["LW", "SW"]
+
 outputFile = open("output.txt", "w")
 
 class ReservationStation:
@@ -55,6 +56,7 @@ class Tomasulo:
         # 0 - 15 : add e sub
         # 16 - 31 : mult e div
         # 32 - 47 : ld e st
+        # como vão ser feitas as operações de desvio e logicas?
 
     # Realiza a busca da instrução na queue
     def search(self) -> None:
@@ -153,27 +155,22 @@ class Tomasulo:
                 imm, rs = inst[2].replace("(", " ").replace(")", " ").split()
                 imm = int(imm)
                 rs = int(rs[1:])
-                if self.memory[rs+imm].Qi != None:
-                    self.RS[r].Qj = self.memory[rs+imm].Qi
-                else:
-                    self.RS[r].Vj = self.memory[rs+imm].value
-                self.RS[r].Vk = rd
+                self.RS[r].Vj = self.memory[rs].value
                 self.RS[r].A = imm
                 self.RS[r].busy = True
                 self.registerStat[rd].Qi = r
             elif op == "SW":
                 rs = int(inst[1][1:])
-                imm, rt = inst[2].replace("(", " ").replace(")", " ").split()
+                imm, rd = inst[2].replace("(", " ").replace(")", " ").split()
                 imm = int(imm)
-                rt = int(rt[1:])
+                rd = int(rd[1:])
                 if self.registerStat[rs].Qi != None:
                     self.RS[r].Qj = self.registerStat[rs].Qi
                 else:
                     self.RS[r].Vj = self.registerStat[rs].value
-                self.RS[r].Vk = rt+imm
                 self.RS[r].A = imm
                 self.RS[r].busy = True
-                self.memory[rt+imm].Qi = r
+                self.memory[rd].Qi = r
         else:
             raise Exception("Instrução não reconhecida")
         self.RS[r].exec = -1
@@ -267,15 +264,9 @@ class Tomasulo:
         elif self.RS[inst].op == "NOT":
             return ~self.RS[inst].Vj
         elif self.RS[inst].op == "LW":
-            if self.registerStat[self.RS[inst].Vk].Qi == inst:
-                self.registerStat[self.RS[inst].Vk].Qi = None
-                self.registerStat[self.RS[inst].Vk].value = self.RS[inst].Vj
-            return self.RS[inst].Vj
+            return self.RS[inst].Vj + self.RS[inst].A
         elif self.RS[inst].op == "SW":
-            if self.memory[self.RS[inst].Vk].Qi == inst:
-                self.memory[self.RS[inst].Vk].Qi = None
-                self.memory[self.RS[inst].Vk].value = self.RS[inst].Vj
-            return self.RS[inst].Vj
+            return self.RS[inst].Vj + self.RS[inst].A
         elif self.RS[inst].op == "BLT":
             return self.RS[inst].Vj < self.RS[inst].Vk
         elif self.RS[inst].op == "BGT":
@@ -335,6 +326,16 @@ class Tomasulo:
         for unit in self.ldUnit:
             if unit.busy and self.RS[unit.inst].exec == 0:
                 v : int = self.execute(unit.inst)
+                if self.RS[unit.inst].op == "SW":
+                    for memory in self.memory:
+                        if memory.Qi == unit.inst:
+                            memory.Qi = None
+                            memory.value = v
+                else:
+                    for register in self.registerStat:
+                        if register.Qi == unit.inst:
+                            register.Qi = None
+                            register.value = v
                 for rs in self.RS:
                     if rs.Qj == unit.inst:
                         rs.Vj = v
@@ -422,7 +423,7 @@ class Tomasulo:
     def run(self) -> None:
         self.search()
         # self.printStatus()
-        self.printBusyStatus()
+        # self.printBusyStatus()
         self.writeOutputFile()
         self.clock += 1
         # input()
@@ -431,8 +432,8 @@ class Tomasulo:
             self.write()
             self.setUnits()
             # self.printStatus()
-            self.printBusyStatus()
-            self.writeOutputFile()
+            # self.printBusyStatus()
+            # self.writeOutputFile()
             self.search()
             self.clock += 1
             # input()
@@ -449,7 +450,7 @@ def lexer(inputFile : TextIO) -> List[List[str]]:
 
 def main():
     try:
-        inputFile = open("teste3.txt")
+        inputFile = open("teste1.txt")
     except:
         print("Arquivo de leitura não encontrado")
         sys.exit()
